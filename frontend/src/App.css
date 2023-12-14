@@ -1,0 +1,19 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,500;1,700&display=swap');
+a{
+    text-decoration: none;
+    color: inherit;
+}
+p{
+    color: rgba(0, 0, 0, 0.5);
+}
+input{
+    background-color: #FFF6F4 !important;
+}
+@font-face {
+    font-family: grapenuts;
+    src: url(./assets/fonts/GrapeNuts-Regular.ttf);
+  }
+  h3{
+    font-family: 'Poppins', sans-serif !important;
+    font-weight:bold !important;
+}
