@@ -1,1 +1,18 @@
-https://www.figma.com/file/YWpRSCF8c8zVaeigSdt1W3/Figma-basics?type=design&node-id=566%3A629&mode=design&t=5jVmap8A9n73TIfc-1
+DELIMITER $$
+CREATE PROCEDURE GetEmpInfo (IN e_id INT)
+BEGIN
+DECLARE FlagNF boolean DEFAULT 0;
+DECLARE var1 varchar(50);
+DECLARE var2 varchar(50);
+DECLARE var3 decimal;
+	BEGIN
+    DECLARE HANDLER FOR NOT FOUND
+    SET FlagNF := 1;
+    SELECT first_name INTO var1 , last_name INTO var2, salary INTO var3 FROM employees WHERE emp_id = e_id;
+    SELECT concat('lemployee id ',e_id, ' est ',var1, var2, 'salary : ',var3)AS "RESULTAT Procedure";
+    END;
+IF FlagNF THEN SELECT concat('lemployee id ',e_id, ' no trouve pas ')AS "RESULTAT Procedure";
+END IF;
+END $$
+DELIMITER ;
+CALL GetEmpInfo(1)
