@@ -1,0 +1,44 @@
+/* src/styles/index.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Your custom styles go here */
+@media (max-width: 800px) {
+    .btn-phone {
+      @apply w-full mr-0 mb-2;
+    }
+    .btn-phone-forget {
+      @apply w-full mr-0 mb-2 text-xs;
+    }
+}
+
+.btn-secondary {
+  @apply px-4 py-2 uppercase font-semibold text-white bg-myOrange hover:shadow-md ;
+}
+
+.btn-primary-sm {
+  @apply px-3 py-1 rounded-md text-sm uppercase font-semibold text-white bg-myOrange hover:shadow-md ;
+}
+
+.btn-secondary-sm {
+  @apply px-3 py-1 rounded-md text-sm uppercase font-semibold text-white bg-myOrange hover:shadow-md ;
+}
+
+.btn-white-sm {
+  @apply px-3 py-1 rounded-md text-sm uppercase font-semibold text-black  bg-white hover:shadow-md ;
+}
+
+/* html {
+  scroll-behavior: smooth;
+} */
+
+/* @layer components {
+  * {
+    @apply scroll-smooth
+  }
+} */
+
+/* .scroll-smooth {
+  scroll-behavior: smooth;
+} */
