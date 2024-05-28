@@ -24,7 +24,7 @@ class ElementFactory extends Factory
             "carbs" => $this->faker->numberBetween(0, 100),
             "fat" => $this->faker->numberBetween(0, 100),
             "price" => $this->faker->numberBetween(0, 50),
-            "measuredByGram" => $this->faker->boolean(0, 50),
+            "measurementUnit" => $this->faker->randomElement(['Gram', "Liter", "Unit", "Cup", "TableSpoon"]),
         ];
     }
 }

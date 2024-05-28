@@ -64,7 +64,7 @@ return new class extends Migration
             $table->integer('protein');
             $table->integer('carbs');
             $table->integer('fat');
-            $table->boolean('measuredByGram');
+            $table->enum('measurementUnit', ['Gram', "Liter", "Unit", "Cup", "TableSpoon"]);
             $table->decimal('price');
             $table->timestamps();
         });
@@ -72,12 +72,11 @@ return new class extends Migration
 
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('element_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('category')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('calories');
             $table->integer('protein');
-            $table->integer('carbs'); // Corrected typo from 'total_carbohydate' to 'total_carbohydrate'
+            $table->integer('carbs'); 
             $table->integer('fat');
             $table->decimal('price', 8, 2); // Added precision and scale for decimal
             $table->timestamps();
@@ -91,12 +90,19 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('orders', function(Blueprint $table){
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('meal_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->decimal('total_price');
-            $table->boolean('confirmed');
+            $table->decimal('total_price', 10, 2); // Specify precision and scale for the decimal field
+            $table->boolean('confirmed')->default(false); // Added default value
+            $table->timestamps();
+        });
+
+        Schema::create('orders_meals', function (Blueprint $table) {
+            $table->id(); 
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('meal_id')->constrained('meals')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
 
@@ -111,12 +117,13 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('customer');
-        Schema::dropIfExists('productivities');
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('orders_meals');
         Schema::dropIfExists('meals');
         Schema::dropIfExists('elements');
         Schema::dropIfExists('goals');
         Schema::dropIfExists('types');
+        Schema::dropIfExists('productivities');
         Schema::dropIfExists('allergies');
     }
 };

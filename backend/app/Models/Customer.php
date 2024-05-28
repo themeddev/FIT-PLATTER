@@ -23,14 +23,22 @@ class Customer extends Authenticatable
     public function Goals(){
         return $this->hasMany(Goal::class);
     }
+
     public function Type(){
         return $this->hasMany(Type::class);
     }
+
     public function Allergy(){
         return $this->hasMany(Allergy::class);
     }
+
     public function Productivity(){
         return $this->hasMany(Productivity::class);
+    }
+    
+    public function order()
+    {
+        return $this->hasMany(Order::class);
     }
 
 

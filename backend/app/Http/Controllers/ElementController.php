@@ -31,8 +31,8 @@ class ElementController extends Controller
             "name" => "required",
             "image"=> "required",
             "calories" => "required",
-            "protien" => "required",
-            "carbohydrates" => "required",
+            "protein" => "required",
+            "carbs" => "required",
             "fat" => "required",
             "price" => "required",
             'measuredByGram' => "required"

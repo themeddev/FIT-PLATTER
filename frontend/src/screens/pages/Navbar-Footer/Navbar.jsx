@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../images/logo.png';
 import { MdShoppingBasket } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../../redux/features/authSlice';
 
 const Navbar = ({ setShowCart }) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -14,9 +15,9 @@ const Navbar = ({ setShowCart }) => {
   const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(path)
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const stickyThreshold = 50;
@@ -29,10 +30,11 @@ const Navbar = ({ setShowCart }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [path]);
 
   const handleLogout = () => {
-    // Add any additional logout logic here
+    // Dispatch logout action to clear Redux state
+    dispatch(logout());
 
     // Clear user information from local storage
     localStorage.removeItem('user');
@@ -46,7 +48,7 @@ const Navbar = ({ setShowCart }) => {
       <div
         className={`border-5 border-green w-5/6 mx-auto z-50 ${
           isSticky ? 'shadow-lg py-2' : 'py-5 '
-        } rounded-lg transition-all duration-300 bg-white fixed top-0 z-10 items-center px-[4%] duration-400`}
+        } rounded-lg transition-all duration-300 bg-white fixed top-0 z-10 items-center px-[4%]`}
       >
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <Link to="/" className="flex w-[115px]">
@@ -148,7 +150,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/home"
-                  className={path == '/home' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/home' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
                   aria-current="page"
                   onClick={() => setIsOpen(false)}
                 >
@@ -158,7 +160,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/custom"
-                  className={path == '/custom' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/custom' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
                   onClick={() => setIsOpen(false)}
                 >
                   Custom
@@ -168,7 +170,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/about-us"
-                  className={path == '/about-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/about-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
                   onClick={() => setIsOpen(false)}
                 >
                   About
@@ -177,7 +179,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/contact-us"
-                  className={path == '/contact-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/contact-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
                   onClick={() => setIsOpen(false)}
                 >
                   Contact

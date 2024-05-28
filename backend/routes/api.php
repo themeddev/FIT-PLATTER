@@ -6,6 +6,7 @@ use App\Http\Controllers\ElementController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\MealsElementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,43 +20,33 @@ use App\Http\Controllers\MealController;
 */
 
 // Public Routes
-Route::get("element", [ElementController::class, 'index']);
-Route::get("element/{element}", [ElementController::class, 'show']);
-Route::get('element/search/{name}', [ElementController::class, 'search']);
-// Route::resource('')
+Route::get("elements", [ElementController::class, 'index']);
+Route::get("elements/{element}", [ElementController::class, 'show']);
+Route::get('elements/search/{name}', [ElementController::class, 'search']);
 
+// Meals Routes
 Route::get("meals", [MealController::class, 'index'])->name('meals.index');
+Route::post("meals", [MealController::class, 'store'])->name('meals.store');
 Route::get("meals/{meal}", [MealController::class, 'show'])->name('meals.show');
 Route::get('meals/search/{name}', [MealController::class, 'search'])->name('meals.search');
+// meals_elements Routes
+Route::post('/meals_elements', [MealsElementController::class, 'store']);
 
-
-// auth Routes-----
+// Auth Routes
 Route::post("register", [CustomerController::class, 'register']);
 Route::post("login", [CustomerController::class, 'login']);
 
+Route::resource('orders', OrderController::class)->except(['create', 'edit']); // Order routes
+
 // Protected Routes
-Route::group(['middleware' => ['auth:sanctum']], function (){
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post("elements", [ElementController::class, 'store']);
+    Route::put("elements/{element}", [ElementController::class, 'update']);
+    Route::delete("elements/{element}", [ElementController::class, 'destroy']);
     
-    Route::post("element", [ElementController::class, 'store']);
-    Route::put("element/{element}", [ElementController::class, 'update']);
-    Route::delete("element/{element}", [ElementController::class, 'destroy']);
-
-    // Meal Routes
-    // Route::post("meal", [MealController::class, 'store']);
-    Route::put("meals/{meal}", [MealController::class, 'update']);
-    Route::delete("meals/{meal}", [MealController::class, 'destroy']);
     
-    //  Order Routes
-    Route::get("order", [OrderController::class, 'index']);
-    Route::post("order", [OrderController::class, 'order']);    
-    Route::get("order/{order}", [OrderController::class, 'show']);    
-    Route::put("order/{order}", [OrderController::class, 'update']);    
-    Route::delete("order/{order}", [OrderController::class, 'destroy']);  
-    
+    Route::get("reco", [OrderController::class, 'reco']); // Recommendation route
 });
-
-// Route::resource("element", ElementController::class);
-Route::get("reco", [OrderController::class, 'reco']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

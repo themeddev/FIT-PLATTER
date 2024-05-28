@@ -27,20 +27,15 @@ const CartMenu = ({ showCart, setShowMenu }) => {
     // If the plat doesn't exist, add it to the cart
     if (!platExists && MenuList.length > 0) {
       
-      const elements = [];
-      MenuList.forEach(item => {
-        elements.push(item.name); // Push each ingredient as a separate element
-        // console.log(item.protein)
-      });
 
       const plat = {
-        id: '100', // Assuming you want to use the first item's ID as the plat ID
+        id: Date.now(), // Assuming you want to use the first item's ID as the plat ID
         category: 'Custom-Plate',
         calories: MenuList.reduce((acc, item) => acc + (item.calories * item.quantity), 0), // Multiply calories by quantity and sum
         protein: MenuList.reduce((acc, item) => acc + (item.protein * item.quantity), 0), // Multiply protein by quantity and sum
         carbs: MenuList.reduce((acc, item) => acc + (item.carbs * item.quantity), 0), // Multiply carbohydrates by quantity and sum
         fat: MenuList.reduce((acc, item) => acc + (item.fat * item.quantity), 0), // Multiply fat by quantity and sum
-        ingredients: elements,
+        elements: MenuList,
         image: MenuList[0].image, // Assuming you want to use the first item's image for the plat
         price: menuTotalPrice, // Total price of the plat
       };
@@ -66,7 +61,7 @@ const CartMenu = ({ showCart, setShowMenu }) => {
       >
         <div className="p-2 w-64 py-5 bg-myOrange items-center text-white leading-none rounded-full flex justify-between " role="alert">
           <MdFileDownloadDone className="ml-2 mr-2" size={20} />
-          <span className="font-semibol font-Poppins mr-2 text-left flex-auto ">Added to cart successfully!</span>
+          <span className="font-Poppins mr-2 text-left flex-auto ">Added to cart successfully!</span>
         </div>
       </motion.div>
     );

@@ -33,7 +33,7 @@ const ElementItem = ({ elem, setShowMenu }) => {
           className="card-actions py-2 lg:py-3 justify-between items-center"
         >
           <p className="bg-myOrange text-white px-2 lg:px-3 flex-none rounded-2xl font-Poppins text-xs lg:text-sm">
-            {elem?.price} MAD / {elem.measuredByGram ? 'item' : '100g'}
+            {elem?.price} MAD / {elem.measurementUnit === 'Gram' ? '100g' : elem.measurementUnit }
           </p>
 
           <span

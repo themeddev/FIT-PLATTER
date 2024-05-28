@@ -70,9 +70,9 @@ const FoodItem = ({ item, setSelectedItem, setShowDetail }) => {
             animate={{opacity: 1, y: 0}}
             transition={{duration: .2, ease: [.64,.04,.08, .98]}}
         >
-          <div className="p-2 w-64 py-5 bg-myOrange items-center text-white leading-none rounded-full flex justify-between " role="alert">
+          <div className="p-2 w-auto py-5 bg-myOrange items-center text-white leading-none rounded-full flex justify-between " role="alert">
             <MdFileDownloadDone className="ml-2 mr-2" size={20} />
-            <span className="font-semibol font-Poppins mr-2 text-left flex-auto ">Added to cart successfully!</span>
+            <span className="font-Poppins mr-2 text-left flex-auto ">Added to cart successfully!</span>
           </div>  
         </motion.div>
       )}

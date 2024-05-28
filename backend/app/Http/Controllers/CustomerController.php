@@ -3,101 +3,73 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-// use App\Models\customers;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class CustomerController extends Controller
 {
-    //
-    use HasApiTokens, HasFactory, Notifiable;
-
-    
-    public function register(Request $req)
+    public function register(Request $request)
     {
-        $fildes = $req->validate([
+        $validatedData = $request->validate([
             "first_name" => 'required|string',
-            "last_name" => 'string',
+            "last_name" => 'string|nullable',
             "email" => "required|string|unique:customers,email",
             "password" => "required|string",
-            "age" => "numeric",
-            "gender" => "string",
-            "height" => "numeric", 
-            "wight" => "numeric", 
-            "phone" => "string",
-            "allergy_id" => "numeric",
-            "productivity_id" => "numeric",
-            "type_id" => "numeric",
-            "goal_id" => "numeric",
-            "MusclePercentage" => 'numeric',
-            "FatPercentage" => 'numeric'
+            "age" => "numeric|nullable",
+            "gender" => "string|nullable",
+            "height" => "numeric|nullable",
+            "weight" => "numeric|nullable",
+            "phone" => "string|nullable",
+            "allergy_id" => "numeric|nullable",
+            "productivity_id" => "numeric|nullable",
+            "type_id" => "numeric|nullable",
+            "goal_id" => "numeric|nullable",
+            "MusclePercentage" => 'numeric|nullable',
+            "FatPercentage" => 'numeric|nullable'
         ]);
 
-        $customer = Customer::create([
-            "first_name" => $fildes['first_name'],
-            "last_name" => $fildes['last_name'] ?? null,
-            "email" => $fildes['email'],
-            "password" => bcrypt($fildes['password']),
-            "age" => $fildes['age'] ?? null,
-            "gender" => $fildes['gender'] ?? null,
-            "height" => $fildes["number"] ?? null, 
-            "weight" => $fildes['weight'] ?? null, 
-            "phone" => $fildes['phone'] ?? null,
-            "allergy_id" => $fildes['allergy_id'] ?? null,
-            "productivity_id" => $fildes['productivity_id'] ?? null,
-            "type_id" => $fildes['type_id'] ?? null,
-            "goal_id" => $fildes['goal_id'] ?? null,
-            "MusclePercentage" => $fildes['MusclePercentage'] ?? null,
-            "FatPercentage" => $fildes['FatPercentage'] ?? null
-        ]);
+        $validatedData['password'] = bcrypt($validatedData['password']);
 
-        // $customer = Customer::create($req->all());
+        $customer = Customer::create($validatedData);
+
         $token = $customer->createToken('MyTokenApp')->plainTextToken;
 
-        $response = [
-            // "customer" => $customer,
-            // 'token' => $token
-            "message" => "all good"
-        ];
-
-        return response($response, 201);
+        return response([
+            "message" => "Customer registered successfully.",
+            "token" => $token
+        ], 201);
     }
 
-
-    public function login(Request $req)
+    public function login(Request $request)
     {
-        $fildes = $req->validate([
+        $validatedData = $request->validate([
             'email' => 'string|required',
             'password' => 'string|required',
         ]);
 
-        $customer = Customer::where("email", $fildes['email'])->first();
+        $customer = Customer::where("email", $validatedData['email'])->first();
 
-        if(!$customer || !Hash::check($fildes['password'], $customer->password)){
+        if (!$customer || !Hash::check($validatedData['password'], $customer->password)) {
             return response([
-                'message' => "Bad Creds",
+                'message' => "Invalid credentials.",
             ], 401);
         }
 
         $token = $customer->createToken('MyTokenApp')->plainTextToken;
-        $res = [
-            // 'customer'=> $customer,
-            'token'=> $token
-        ];
-        return response($res);
+
+        return response([
+            'message' => 'Login successful.',
+            'token' => $token,
+            'customer_id' => $customer->id
+        ]);
     }
 
-    public function logout(Request $req)
+    public function logout(Request $request)
     {
-        auth()->user()->token()->delete();
+        auth()->user()->tokens()->delete();
+
         return [
-            "message" => "Logged out"
+            "message" => "Logged out successfully."
         ];
     }
-
 }

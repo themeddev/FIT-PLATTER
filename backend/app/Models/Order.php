@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'customer_id',
-        'meal_id',
         'total_price',
-        'confirmed'
+        'confirmed',
     ];
 
     public function customer()
@@ -21,8 +18,8 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function meal()
+    public function meals()
     {
-        return $this->belongsTo(Meal::class);
+        return $this->belongsToMany(Meal::class, 'orders_meals')->withPivot('quantity');
     }
 }

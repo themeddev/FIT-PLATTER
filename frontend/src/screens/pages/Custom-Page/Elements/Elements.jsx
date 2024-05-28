@@ -11,7 +11,7 @@ const Elements = () => {
 
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/element')
+        fetch('http://127.0.0.1:8000/api/elements')
             .then(res => res.json())
             .then(data => setElements(data))
             .catch(err => console.log(err));
@@ -19,7 +19,7 @@ const Elements = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 2000);
     }, []);
     
 

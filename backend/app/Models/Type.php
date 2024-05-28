@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Customer;
 
 class Type extends Model
 {
@@ -11,6 +12,6 @@ class Type extends Model
 
     
     public function Customer(){
-        return $this->belongsTo('App\Customer');
+        return $this->hasMany(Customer::class);
     }
 }

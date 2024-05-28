@@ -9,9 +9,11 @@ import SEO from "../../../data/seo";
 import { Helmet } from "react-helmet";
 
 function ShoppingCart() {
+  
   const title = 'Shooping cart';
-  const { cartList, totalPrice : cartTotalPrice } = useSelector((state) => state.Cart);
+  const { cartList, totalPrice : cartTotalPrice, clearCart } = useSelector((state) => state.Cart);
   // const { cartMenu, totalPrice: menuTotalPrice } = useSelector((state) => state.ElemMenu);
+  
   const [isCheckout, setIsCheckout] = useState(false)
   const dispatch = useDispatch();
 

@@ -9,16 +9,15 @@ const Food = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [foods, setFoods] = useState([]);
 
-    useEffect(() => {
+    useEffect( () => {
         fetch('http://127.0.0.1:8000/api/meals')
             .then(res => res.json())
             .then(data => {
                 setFoods(data);
                 setLoading(false);
-                console.log(data)
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
                 setLoading(false);
             });
     }, []);
