@@ -35,7 +35,7 @@ const Elements = () => {
                     </p>
                 </div>
 
-                {/* All foods */}
+                {/* All Elements */}
                 <div className="flex flex-row mt-8">
                     <div className="gap-4 w-full flex justify-center flex-row mx-auto flex-wrap transition-all duration-300">
                         {elements.map((elem) => (

@@ -22,6 +22,8 @@ return [
     'allowed_origins' => [
         'http://localhost:3000', // react for local development
         'http://localhost:5173', // vite for local development
+        'http://localhost:5174', // vite for local development
+        'http://localhost:5175  ', // vite for local development
     ],
 
     'allowed_origins_patterns' => [],

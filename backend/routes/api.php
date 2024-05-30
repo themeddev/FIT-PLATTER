@@ -55,7 +55,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Goals Routes
     Route::resource("goal", GoalController::class);
 
-    Route::get("reco", [OrderController::class, 'reco']); // Recommendation route
+    Route::get("reco/{id}", [MealController::class, 'reco']); // Recommendation route
    
 
 });

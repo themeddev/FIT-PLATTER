@@ -37,7 +37,7 @@ const FoodItem = ({ item, setSelectedItem, setShowDetail }) => {
       </figure>
       <div className="card-body text-myBlue">
         <h2 className="card-title">{item.category}</h2>
-        <p>
+        <p className="truncate">
           {item.calories} calories, {item.protein} g protein, {item.carbs} g carbs, {item.fat} g fat
         </p>
         <div

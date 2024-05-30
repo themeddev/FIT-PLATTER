@@ -41,6 +41,7 @@ export default function SignUpForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: '' });
   };
@@ -82,7 +83,13 @@ export default function SignUpForm() {
       setErrors({ password_confirmation: 'Passwords do not match' });
       return;
     }
+    formData.allergy_id = parseInt(formData.allergy_id);
+    formData.goal_id = parseInt(formData.goal_id);
+    formData.productivity_id = parseInt(formData.productivity_id);
+    formData.type_id = parseInt(formData.type_id);
+
     dispatch(registerUser(formData));
+
   };
 
   useEffect(() => {

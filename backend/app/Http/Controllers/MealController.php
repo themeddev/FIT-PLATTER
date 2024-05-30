@@ -175,10 +175,11 @@ class MealController extends Controller
         $url = 'http://localhost:8008/';
         $ingredient = Element::pluck('name')->toArray();
 
-        $User = Customer::with('Goals', 'Type', 'Allergy', 'Productivity')->get();
+        // $User = Customer::with('Goals', 'Type', 'Allergy', 'Productivity')->get($id);
+        $User = Customer::find($id);
+        return $User;
         
         $res = Http::post($url, ['ingredient' => $ingredient, "User" => $User]);
-
 
         // $client = new Client();
         // $res = $client->request("POST", $url, [["name"=> "achraf", "email" => "achraf@gmail.com"], ["name" => "youness", "email"=> "younss@gmail.com"]]);
