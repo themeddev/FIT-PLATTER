@@ -1,47 +1,36 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../../images/logo.png';
 import { MdShoppingBasket } from 'react-icons/md';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../../redux/features/authSlice';
+import { useSelector } from 'react-redux';
+import UserMenu from './userMenu';
 
 const Navbar = ({ setShowCart }) => {
   const [isSticky, setIsSticky] = useState(false);
-  const active = 'bg-myOrange md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-myOrange md:p-0 rounded';
-  const path = location.pathname;
-
   const [isOpen, setIsOpen] = useState(false);
-  const { cartList } = useSelector((state) => state.Cart);
+  
   const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+  
+  const { cartList } = useSelector((state) => state.Cart);
+  
+  const active = 'bg-myOrange md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-myOrange md:p-0 rounded';
+  const notActive = 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded';
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const stickyThreshold = 50;
-
       setIsSticky(scrollPosition > stickyThreshold);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [path]);
-
-  const handleLogout = () => {
-    // Dispatch logout action to clear Redux state
-    dispatch(logout());
-
-    // Clear user information from local storage
-    localStorage.removeItem('user');
-
-    // Redirect to the login page
-    navigate('/sign-in', { replace: true });
-  };
+  }, []);
 
   return (
     <div className="flex justify-center h-20">
@@ -61,49 +50,28 @@ const Navbar = ({ setShowCart }) => {
             )}
           </Link>
 
-          <div className="flex md:order-2">
+          <div className="flex md:order-2 py-2">
             {/* Check if the user is logged in */}
-            {!user ? (
-              // If not logged in, display styled login and sign-up buttons
-              <>
-                <Link
-                  to="/sign-in"
-                  className="hidden md:block text-white bg-myOrange font-Outfit py-2 px-4 rounded-full hover:bg-myBlue duration-150"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/sign-up"
-                  className="hidden md:block text-myBlue bg-white px-4 py-2 rounded-full hover:bg-gray-100 duration-150"
-                >
-                  Sign-Up
-                </Link>
-              </>
-            ) : (
-              // If logged in, display styled logout button
-              <>
-                <div
-                  className="relative flex items-center justify-center py-2 mr-3 active:scale-95"
-                  onClick={() => setShowCart(true)}
-                >
-                  <MdShoppingBasket className="text-textColor text-gray-400 text-2xl hover:text-myBlue cursor-pointer transition-all duration-400" />
+            { user ? 
+              <div
+                className="relative flex items-center justify-center  mr-3 active:scale-95"
+                onClick={() => setShowCart(true)}
+              >
+                <MdShoppingBasket className="text-textColor text-gray-400 text-2xl hover:text-myBlue cursor-pointer transition-all duration-400" />
 
-                  {cartList && cartList.length > 0 && (
-                    <div className="absolute -top-1 -right-2 w-4 h-4 rounded-full bg-myOrange flex items-center justify-center">
-                      <p className="text-xs text-white font-semibold">
-                        {cartList.length}
-                      </p>
-                    </div>
-                  )}
-                </div>
-                <button
-                  onClick={handleLogout}
-                  className="hidden md:block text-myBlue bg-white px-4 py-2 rounded-full hover:bg-gray-100 duration-150"
-                >
-                  Logout
-                </button>
-              </>
-            )}
+                {cartList && cartList.length > 0 && (
+                  <div className="absolute -top-1 -right-2 w-4 h-4 rounded-full bg-myOrange flex items-center justify-center">
+                    <p className="text-xs text-white font-semibold">
+                      {cartList.length}
+                    </p>
+                  </div>
+                )}
+              </div>
+              : 
+              null
+             }
+
+            <UserMenu />
 
             <button
               data-collapse-toggle="mobile-menu-3"
@@ -143,14 +111,14 @@ const Navbar = ({ setShowCart }) => {
             </button>
           </div>
           <div
-            className={`${!isOpen ? 'hidden' : ''} md:flex justify-between items-center w-full md:w-auto md:order-1`}
+            className={`${!isOpen ? 'hidden' : ''} md:flex justify-between items-center w-full md:w-auto md:order-1 `}
             id="mobile-menu-3"
           >
             <ul className="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium z-20">
               <li>
                 <Link
                   to="/home"
-                  className={path === '/home' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/home' ? active : notActive} 
                   aria-current="page"
                   onClick={() => setIsOpen(false)}
                 >
@@ -160,7 +128,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/custom"
-                  className={path === '/custom' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/custom' ? active : notActive} 
                   onClick={() => setIsOpen(false)}
                 >
                   Custom
@@ -170,7 +138,7 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/about-us"
-                  className={path === '/about-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/about-us' ? active : notActive} 
                   onClick={() => setIsOpen(false)}
                 >
                   About
@@ -179,48 +147,13 @@ const Navbar = ({ setShowCart }) => {
               <li>
                 <Link
                   to="/contact-us"
-                  className={path === '/contact-us' ? active : 'text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded'} 
+                  className={path === '/contact-us' ? active : notActive} 
                   onClick={() => setIsOpen(false)}
                 >
                   Contact
                 </Link>
               </li>
-              {!user ? (
-                // If not logged in, display styled login and sign-up links in the mobile dropdown
-                <>
-                  <li>
-                    <Link
-                      to="/sign-in"
-                      className="block md:hidden text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/sign-up"
-                      className="block md:hidden text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 rounded"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Sign-Up
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                // If logged in, display styled logout link in the mobile dropdown
-                <li>
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      setIsOpen(false);
-                    }}
-                    className="block md:hidden text-gray-500 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-myOrange md:p-0 w-full text-left rounded"
-                  >
-                    Logout
-                  </button>
-                </li>
-              )}
+              
             </ul>
           </div>
         </div>

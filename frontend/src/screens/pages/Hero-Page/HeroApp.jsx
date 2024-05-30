@@ -17,7 +17,7 @@ const OutletPage = () => {
             <meta name="keywords" content={SEO[0].keywords.join(", ")} />
         </Helmet>
 
-        {/* Your components */}
+        {/*  components */}
         <HeroSection />
         <Comments />
         <WhyUs />

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "./authAction";
+import { loginUser, registerUser, updateUser, getUserData } from "./authAction";
 
 // Initial state with more detailed structure
 const initialState = {
@@ -64,6 +64,38 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.success = false;
                 state.error = payload || 'Failed to register';
+            })
+            // Handle update user actions
+            .addCase(updateUser.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+                state.success = false;
+            })
+            .addCase(updateUser.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.success = true;
+                state.userInfo = payload.customer; // Assuming the payload contains the updated customer data
+            })
+            .addCase(updateUser.rejected, (state, { payload }) => {
+                state.loading = false;
+                state.success = false;
+                state.error = payload || 'Failed to update user info';
+            })
+            // Handle get user data actions
+            .addCase(getUserData.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+                state.success = false;
+            })
+            .addCase(getUserData.fulfilled, (state, { payload }) => {
+                state.loading = false;
+                state.success = true;
+                state.userInfo = payload; // Assuming the payload contains the user data
+            })
+            .addCase(getUserData.rejected, (state, { payload }) => {
+                state.loading = false;
+                state.success = false;
+                state.error = payload || 'Failed to fetch user data';
             });
     },
 });

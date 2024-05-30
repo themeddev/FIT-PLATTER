@@ -17,6 +17,7 @@ import ShowNF from './screens/pages/Navbar-Footer/ShowNF';
 import PrivateRoute from './Outil/PrivateRoutes';
 import Terms from './screens/pages/Terms';
 import ShoppingCart from './screens/pages/Cart/shopping-cart';
+import ProfileApp from './screens/pages/Profile/ProfileApp';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -52,6 +53,11 @@ function App() {
           <Routes>
             <Route index element={<HeroApp />} />
             {/* Use PrivateRoute for private routes */}
+            <Route path="/profile" element={
+              <PrivateRoute>
+                <ProfileApp />
+              </PrivateRoute>
+            } />
             <Route path="/home" element={
               <PrivateRoute>
                 <HomeApp />

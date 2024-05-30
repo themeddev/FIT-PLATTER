@@ -7,6 +7,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\MealsElementController;
+use App\Http\Controllers\GoalController;
+use App\Http\Controllers\SmallTableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +37,14 @@ Route::post('/meals_elements', [MealsElementController::class, 'store']);
 // Auth Routes
 Route::post("register", [CustomerController::class, 'register']);
 Route::post("login", [CustomerController::class, 'login']);
+// customer routres
+Route::get('customer/{customer_id}', [CustomerController::class, 'getUserData']);
+Route::post('customer/{customer_id}/update', [CustomerController::class, 'update']);
 
 Route::resource('orders', OrderController::class)->except(['create', 'edit']); // Order routes
+
+// smallTable
+Route::get('smallTable', [SmallTableController::class, 'index']);
 
 // Protected Routes
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -44,8 +52,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put("elements/{element}", [ElementController::class, 'update']);
     Route::delete("elements/{element}", [ElementController::class, 'destroy']);
     
-    
+    // Goals Routes
+    Route::resource("goal", GoalController::class);
+
     Route::get("reco", [OrderController::class, 'reco']); // Recommendation route
+   
+
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

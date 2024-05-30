@@ -70,7 +70,7 @@ export default function Step1({ formData, handleInputChange, errors }) {
         {errors.gender && <p className="mt-1 text-xs text-red-500">{errors.gender}</p>}
       </div>
       <div className="mb-2">
-        <label htmlFor="height" className="block mb-2 text-sm font-medium text-gray-700">Height(Cm)</label>
+        <label htmlFor="height" className="block mb-2 text-sm font-medium text-gray-700">Height(cm)</label>
         <input
           type="number"
           id="height"
@@ -94,12 +94,12 @@ export default function Step1({ formData, handleInputChange, errors }) {
         />
       </div>
       <div className="mb-2">
-        <label htmlFor="telephone" className="block mb-2 text-sm font-medium text-gray-700">Telephone</label>
+        <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-700">Telephone</label>
         <input
           type="tel"
-          id="telephone"
-          name="telephone"
-          value={formData.telephone}
+          id="phone"
+          name="phone"
+          value={formData.phone}
           onChange={handleInputChange}
           placeholder="Enter telephone"
           className="w-full px-3 py-2 bg-InputBg border border-InputBg rounded-md outline-none focus:border-[#FC6212]"

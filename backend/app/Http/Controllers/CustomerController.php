@@ -60,9 +60,11 @@ class CustomerController extends Controller
         return response([
             'message' => 'Login successful.',
             'token' => $token,
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
+            'first_name' => $customer->first_name
         ]);
     }
+
 
     public function logout(Request $request)
     {
@@ -72,4 +74,66 @@ class CustomerController extends Controller
             "message" => "Logged out successfully."
         ];
     }
+
+    public function getUserData(Request $request, $customer_id)
+    {
+        $customer = Customer::find($customer_id);
+    
+        if (!$customer) {
+            return response()->json([
+                'message' => 'Customer not found.'
+            ], 404);
+        }
+    
+        return response()->json([
+            'message' => 'Customer data retrieved successfully.',
+            'customer' => $customer
+        ], 200);
+    }
+
+    public function update(Request $request, $customer_id)
+    {
+        $customer = Customer::find($customer_id);
+    
+        if (!$customer) {
+            return response()->json([
+                'message' => 'Customer not found.'
+            ], 404);
+        }
+    
+        $validatedData = $request->validate([
+            "first_name" => 'string|nullable',
+            "last_name" => 'string|nullable',
+            "email" => "string|nullable|unique:customers,email," . $customer->id,
+            "password" => "string|nullable",
+            "age" => "numeric|nullable",
+            "gender" => "string|nullable",
+            "height" => "numeric|nullable",
+            "weight" => "numeric|nullable",
+            "phone" => "string|nullable",
+            "allergy_id" => "numeric|nullable",
+            "productivity_id" => "numeric|nullable",
+            "type_id" => "numeric|nullable",
+            "goal_id" => "numeric|nullable",
+            "MusclePercentage" => 'numeric|nullable',
+            "FatPercentage" => 'numeric|nullable'
+        ]);
+
+
+        // update password
+        // if (isset($validatedData['password'])) {
+        //     $validatedData['password'] = bcrypt($validatedData['password']);
+        // }
+    
+        $customer->update($validatedData);
+    
+        return response()->json([
+            "message" => "Customer information updated successfully.",
+            "customer" => $customer
+        ], 200);
+    }
+
+    
+
+    
 }

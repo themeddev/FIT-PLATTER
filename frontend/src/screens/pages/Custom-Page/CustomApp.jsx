@@ -7,17 +7,14 @@ import { Helmet } from "react-helmet";
 
 const CustomApp = () => {
 
-    const title = 'Custom';
-
-
     return ( 
     <>
         <Helmet>
-            <title>{`${title} | ${INFO.main.title}`}</title>
-            <meta name="description" content={SEO[2].description} />
-            <meta name="keywords" content={SEO[2].keywords.join(", ")} />
+            <title>{`${SEO[3].page} | ${INFO.main.title}`}</title>
+            <meta name="description" content={SEO[3].description} />
+            <meta name="keywords" content={SEO[3].keywords.join(", ")} />
         </Helmet>
-        <HeroCopy title={title} imgSrc={img} />
+        <HeroCopy title={SEO[3].page} imgSrc={img} />
         <Elements />
     </>
     );

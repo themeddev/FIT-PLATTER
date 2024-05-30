@@ -9,19 +9,18 @@ import { Helmet } from "react-helmet";
 
 const AboutUsApp = () => {
 
-    const title = 'About us';
     
     
     return ( 
         <>
             <Helmet>
-                <title>{`${title} | ${INFO.main.title}`}</title>
-                <meta name="description" content={SEO[3].description} />
-                <meta name="keywords" content={SEO[3].keywords.join(", ")} />
+                <title>{`${SEO[2].page} | ${INFO.main.title}`}</title>
+                <meta name="description" content={SEO[2].description} />
+                <meta name="keywords" content={SEO[2].keywords.join(", ")} />
             </Helmet>
 
             {/* components.. */}
-            <HeroCopy title={title} imgSrc={img} />
+            <HeroCopy title={SEO[2].page} imgSrc={img} />
             <ServicesInfo />
             <OurChefs />
             <Map />

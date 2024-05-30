@@ -21,13 +21,13 @@ export default function SignUpForm() {
     gender: '',
     height: '',
     weight: '',
-    telephone: '',
-    activityLevel: '',
-    allergies: '',
-    type: '',
-    musclePercentage: '',
+    phone: '',
+    productivity_id: '',
+    allergy_id: '',
+    type_id: '',
+    MusclePercentage: '',
     FatPercentage: '',
-    fitnessGoal: '',
+    goal_id: '',
     password: '',
     password_confirmation: '',
   });
@@ -37,11 +37,7 @@ export default function SignUpForm() {
   const dispatch = useDispatch();
   const { loading, userInfo, error, success } = useSelector(state => state.auth);
 
-  useEffect(() => {
-    if (success) {
-      navigate("/sign-in", { replace: true });
-    }
-  }, [success, navigate]);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -88,6 +84,12 @@ export default function SignUpForm() {
     }
     dispatch(registerUser(formData));
   };
+
+  useEffect(() => {
+    if (success) {
+      navigate("/sign-in");
+    }
+  }, [success]);
 
   return (
     <>
@@ -155,7 +157,11 @@ export default function SignUpForm() {
                     className="btn-phone w-1/4 px-5 py-2 font-Poppins text-white bg-myOrange rounded-full hover:bg-orange-600 flex items-center justify-center shadow transition"
                   >
                     SIGN UP
-                    <ArrowRightIcon fill="currentColor" className="w-4 h-4 ml-2" />
+                    
+                    {
+                      loading ?<span className="ml-2 loading loading-dots loading-xs"></span> : 
+                      <ArrowRightIcon fill="currentColor" className="w-4 h-4 ml-2" />
+                    }
                   </button>
                 </>
               )}

@@ -58,33 +58,3 @@ const Cart = ({ showCart, setShowCart }) => {
 };
 
 export default Cart;
-
-
-
-
-
-
-{/* 
-<div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-row justify-between">
-  <p className="text-base font-Outfit leading-3 text-headersBlue md:pt-0 pt-4">{meal.category}</p>
-  <div className="flex items-center justify-between w-full">
-    <p className="text-base font-black leading-none text-gray-800">{meal.name}</p>
-
-    <div className="flex flex-row items-center justify-between gap-2 text-headersBlue" >
-      <IoIosArrowDropupCircle size={25} onClick={() => handleAddToCart(meal)} />
-      <input type="number" className="py-1 pl-3 w-20 border border-gray-200" value={meal.quantity} readOnly />
-      <IoIosArrowDropdownCircle size={25}  onClick={() => handleRemoveFromCart(meal)} />
-    </div>
-    
-  </div>
-  <p className="text-gray-700 text-xs">
-    {meal?.calories} calories, {meal?.protein} g protein, {meal?.carbs} g carbs, {meal?.fat} g fat
-  </p>
-  <div className="flex items-center justify-between pt-5">
-    <p className="text-xs leading-3 underline text-red-500 cursor-pointer" onClick={() => handleRemoveFromCart(meal)}>
-      Remove
-    </p>
-    <p className="text-base font-black leading-none text-headersBlue">{meal.price.toFixed(2)} MAD</p>
-  </div>
-</div> 
-*/}

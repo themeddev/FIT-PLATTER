@@ -10,7 +10,6 @@ import { Helmet } from "react-helmet";
 
 function ShoppingCart() {
   
-  const title = 'Shooping cart';
   const { cartList, totalPrice : cartTotalPrice, clearCart } = useSelector((state) => state.Cart);
   // const { cartMenu, totalPrice: menuTotalPrice } = useSelector((state) => state.ElemMenu);
   
@@ -44,7 +43,7 @@ function ShoppingCart() {
   return (
       <>
         <Helmet>
-            <title>{`${title} | ${INFO.main.title}`}</title>
+            <title>{`${SEO[8].page} | ${INFO.main.title}`}</title>
             <meta name="description" content={SEO[8].description} />
             <meta name="keywords" content={SEO[8].keywords.join(", ")} />
         </Helmet>
