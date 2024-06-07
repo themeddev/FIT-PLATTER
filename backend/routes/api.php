@@ -26,6 +26,9 @@ Route::get("elements", [ElementController::class, 'index']);
 Route::get("elements/{element}", [ElementController::class, 'show']);
 Route::get('elements/search/{name}', [ElementController::class, 'search']);
 
+// this routes should be protected show to admin only
+Route::get("/customer", [CustomerController::class, 'index']);
+
 // Meals Routes
 Route::get("meals", [MealController::class, 'index'])->name('meals.index');
 Route::post("meals", [MealController::class, 'store'])->name('meals.store');
@@ -41,7 +44,7 @@ Route::post("login", [CustomerController::class, 'login']);
 Route::get('customer/{customer_id}', [CustomerController::class, 'getUserData']);
 Route::post('customer/{customer_id}/update', [CustomerController::class, 'update']);
 
-Route::resource('orders', OrderController::class)->except(['create', 'edit']); // Order routes
+Route::resource('orders', OrderController::class); // Order routes
 
 // smallTable
 Route::get('smallTable', [SmallTableController::class, 'index']);
@@ -56,8 +59,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource("goal", GoalController::class);
 
     Route::get("reco/{id}", [MealController::class, 'reco']); // Recommendation route
-   
-
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

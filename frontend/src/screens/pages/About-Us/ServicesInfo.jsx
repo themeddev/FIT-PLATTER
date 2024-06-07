@@ -13,8 +13,8 @@ const ServicesInfo = () => {
         Fit Platter Services
         </h3>
         
-        <div className="max-w-[1400px] m-auto mt-8 py-4 px-12 grid lg:grid-cols-2 gap-4">
-            <div className="text-l text-gray-400 mt-4 leading-snug tracking-wide py-10">
+        <div className="max-w-[1400px] m-auto mt-8 py-4 px-6 md:px-12 grid lg:grid-cols-2 gap-4">
+            <div className="text-l text-gray-400 md:mt-4 leading-snug tracking-wide md:py-10">
                 
                 <h3 className="font-Outfit text-l text-myBlue font-semibold mb-3">
                     Fit Platter Revolution

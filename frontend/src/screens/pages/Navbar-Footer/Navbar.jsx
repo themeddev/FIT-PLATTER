@@ -35,7 +35,7 @@ const Navbar = ({ setShowCart }) => {
   return (
     <div className="flex justify-center h-20">
       <div
-        className={`border-5 border-green w-5/6 mx-auto z-50 ${
+        className={`w-full sm:w-5/6 mx-auto z-50 ${
           isSticky ? 'shadow-lg py-2' : 'py-5 '
         } rounded-lg transition-all duration-300 bg-white fixed top-0 z-10 items-center px-[4%]`}
       >
@@ -50,7 +50,7 @@ const Navbar = ({ setShowCart }) => {
             )}
           </Link>
 
-          <div className="flex md:order-2 py-2">
+          <div className="flex md:order-2 py-[7.5px]">
             {/* Check if the user is logged in */}
             { user ? 
               <div

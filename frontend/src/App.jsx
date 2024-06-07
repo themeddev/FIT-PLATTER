@@ -18,6 +18,16 @@ import PrivateRoute from './Outil/PrivateRoutes';
 import Terms from './screens/pages/Terms';
 import ShoppingCart from './screens/pages/Cart/shopping-cart';
 import ProfileApp from './screens/pages/Profile/ProfileApp';
+import { Dashboard } from './screens/pages/dashboard/dashboard';
+import { DashboardLayout } from './screens/pages/dashboard/dashboardLayout';
+import { Customer } from './screens/pages/dashboard/customer';
+import Orders from './screens/pages/dashboard/oders';
+import { Meals } from './screens/pages/dashboard/meals';
+import { Elements } from './screens/pages/dashboard/elements';
+import { Types } from './screens/pages/dashboard/types';
+import { Allergies } from './screens/pages/dashboard/allergies';
+import { Productivities } from './screens/pages/dashboard/productivities';
+import { Goals } from './screens/pages/dashboard/goals';
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -53,6 +63,21 @@ function App() {
           <Routes>
             <Route index element={<HeroApp />} />
             {/* Use PrivateRoute for private routes */}
+            <Route path='/dashboard/*' element={
+                <DashboardLayout>
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/customer" element={<Customer />} />
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/meals" element={<Meals />} />
+                    <Route path="/elements" element={<Elements />} />
+                    <Route path="/types" element={<Types />} />
+                    <Route path="/allergies" element={<Allergies />} />
+                    <Route path="/productivities" element={<Productivities />} />
+                    <Route path="/goals" element={<Goals />} />
+                  </Routes>
+                </DashboardLayout>
+            } />
             <Route path="/profile" element={
               <PrivateRoute>
                 <ProfileApp />

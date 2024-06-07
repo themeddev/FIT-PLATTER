@@ -74,29 +74,40 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $fields = $request->validate([
-            "meals" => "required",
-            "customer_id" => "required",
-            "total_price" => "numeric",
-            "confirmed" => "boolean"
+            "meals" => "array",
+            "customer_id" => "sometimes|required|integer",
+            "total_price" => "sometimes|numeric",
+            "confirmed" => "sometimes|boolean"
         ]);
 
         $order = Order::find($id);
-        if (!$order) return response(["message" => "Order Was Not Found!"]);
+        if (!$order) {
+            return response(["message" => "Order Was Not Found!"], 404);
+        }
 
-        $order->confirmed = $fields['confirmed'];
-        $order->total_price = $fields['total_price'];
+        if (isset($fields['confirmed'])) {
+            $order->confirmed = $fields['confirmed'];
+        }
+        if (isset($fields['total_price'])) {
+            $order->total_price = $fields['total_price'];
+        }
+        if (isset($fields['customer_id'])) {
+            $order->customer_id = $fields['customer_id'];
+        }
 
-        OrderMeal::where('order_id', $order->id)->delete();
-        foreach ($fields['meals'] as $meal) {
-            $orderMeal = OrderMeal::create([
-                'meal_id' => $meal['id'],
-                'order_id' => $order->id,
-                'quantity' => $meal['quantity']
-            ]);
-            if (!$orderMeal) {
-                return response([
-                    "message" => "Order Not Made Due To An Error",
+        if (isset($fields['meals'])) {
+            OrderMeal::where('order_id', $order->id)->delete();
+            foreach ($fields['meals'] as $meal) {
+                $orderMeal = OrderMeal::create([
+                    'meal_id' => $meal['id'],
+                    'order_id' => $order->id,
+                    'quantity' => $meal['quantity']
                 ]);
+                if (!$orderMeal) {
+                    return response([
+                        "message" => "Order Not Made Due To An Error",
+                    ], 500);
+                }
             }
         }
 
@@ -104,7 +115,7 @@ class OrderController extends Controller
         return response([
             "message" => "Order Was Updated Successfully",
             "order" => $order
-        ]);
+        ], 200);
     }
 
     public function destroy($id)

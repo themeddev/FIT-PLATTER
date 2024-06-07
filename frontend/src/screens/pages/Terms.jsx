@@ -16,13 +16,13 @@ const Terms = () => {
 
     <>
       <Helmet>
-        <title>{`Terms | ${INFO.main.title}`}</title>
+        <title>{`${SEO[5].page} | ${INFO.main.title}`}</title>
         <meta name="description" content={SEO[5].description} />
         <meta name="keywords" content={SEO[5].keywords.join(", ")} />
       </Helmet>
 
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="w-full max-w-2xl p-8 bg-white shadow-md rounded-md">
+      <div className="min-h-screen flex items-center justify-center md:bg-gray-50">
+        <div className="w-full max-w-2xl p-8 bg-white md:shadow-md rounded-md">
           <h1 className="text-3xl font-Outfit text-myBlue mb-6">Terms and Conditions</h1>
           <p className="text-gray-700 mb-4">
             By using the {logo} platform, you agree to abide by the following terms and

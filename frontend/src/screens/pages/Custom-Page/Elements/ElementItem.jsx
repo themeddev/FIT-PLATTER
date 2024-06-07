@@ -15,10 +15,10 @@ const ElementItem = ({ elem, setShowMenu }) => {
   };
 
   return (
-    <div className="card card-compact cursor-pointer w-48 lg:w-64 bg-white hover:shadow-lg shadow-md">
-      <figure>
+    <div className="card card-compact cursor-pointer w-48 lg:w-64 h-64 lg:h-80 bg-white hover:shadow-lg shadow-md">
+      <figure className="w-full h-full">
         <img
-          className="hover:scale-105 duration-300"
+          className="w-full h-full object-cover hover:scale-105 duration-300"
           src={elem.image ? elem.image : defaultImage} // Use default image if elem.image is not found
           alt={elem.name}
         />

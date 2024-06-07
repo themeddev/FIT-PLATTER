@@ -36,7 +36,7 @@ const WhyUs = () => {
         <p className="text-gray-500 font-Poppins md:w-2/5 md:m-auto mt-2 w-full">We continue to consistently choose and maintain the quality of the fruit served so that it remains fresh and nutritious when you eat it.</p>
       </motion.div>
 
-      <div className="flex flex-col lg:flex-row lg:gap-6 gap-4 pt-10 px-[5%] ">
+      <div className="flex flex-col lg:flex-row lg:gap-6 gap-4 mt-8 md:px-[5%] ">
         {cardContent.map((item, index) => (
           <motion.div 
             initial={{ y: 5, scaleZ: 0.99 , opacity : 0 }}

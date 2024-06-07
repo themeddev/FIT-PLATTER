@@ -46,6 +46,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('phone')->nullable();
             $table->string('password');
+            $table->enum('role', ['Customer', 'Admin']);
             $table->foreignId('goal_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('productivity_id')->nullable()->constrained()->onDelete('cascade');
@@ -72,7 +73,7 @@ return new class extends Migration
 
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->string('category')->nullable();
+            $table->enum('category', ['Pre-Workout', 'After-Workout', "Custom-Plate"])->nullable();
             $table->string('image')->nullable();
             $table->integer('calories');
             $table->integer('protein');

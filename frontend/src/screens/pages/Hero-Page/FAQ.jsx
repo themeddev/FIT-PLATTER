@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Accordion = () => {
   return (
-    <section className="z-10  relative overflow-hidden bg-white px-10 pb-12 pt-20  lg:pb-[90px] ">
+    <section className="z-10 relative overflow-hidden bg-white px-3 md:px-10 py-10 mb-4 ">
       <div className="container mx-auto ">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">

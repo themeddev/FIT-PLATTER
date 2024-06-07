@@ -70,9 +70,9 @@ const ForgottenPassword = () => {
   }, [showAlert]);
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-40">
+    <div className="flex items-center justify-center h-screen md:bg-gray-50">
       {showAlert && <Alert isEmailAvailable={isEmailAvailable} showAlert={showAlert} setShowAlert={setShowAlert} />}
-      <div className="w-1/2 p-10 bg-white rounded-lg shadow-md">
+      <div className="w-full md:w-1/2 p-8 md:p-10 bg-white rounded-lg md:shadow-md">
         <h2 className="text-3xl text-center font-Outfit text-myBlue">Forgot Your Password?</h2>
         <h1 className="text-xs mb-7 text-center font-small text-gray-500">
           Enter your email address, and we’ll send you an email with password reset instructions.
@@ -91,7 +91,7 @@ const ForgottenPassword = () => {
             />
             <p className="mt-1 text-xs text-red-500">{errors.email}</p>
           </div>
-          <button type="submit" className="btn-phone-forget w-full px-3 py-1.5 font-Poppins text-white bg-[#FC6212] rounded-md hover:bg-orange-600 flex items-center justify-center">
+          <button type="submit" className="w-full px-3 py-1.5 font-Poppins text-white bg-[#FC6212] rounded-md hover:bg-orange-600">
             SEND RECOVERY EMAIL
           </button>
         </form>

@@ -1,0 +1,137 @@
+[
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/lunchbox-with-sandwich-vegetables-fruit-white_114579-3835.jpg?t=st=1717197897~exp=1717201497~hmac=faa94ce2670a053b94aed079d23ea531b745e6618594177cdfb59c6c25e438fe&w=900",
+        "calories": 300,
+        "protein": 15,
+        "carbs": 45,
+        "fat": 5,
+        "price": 5.99
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/high-angle-tasty-food-arrangement_23-2149182232.jpg?t=st=1717197921~exp=1717201521~hmac=01a5271b38fe5656e820d5924775e3698fee8ba5b236e1aa37e93f26d5a65d45&w=900",
+        "calories": 250,
+        "protein": 20,
+        "carbs": 30,
+        "fat": 7,
+        "price": 6.49
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/premium-photo/fitness-active-healthy-lifestyles-concept-plate-chicken-breast-salad_1205-7710.jpg?w=900",
+        "calories": 350,
+        "protein": 25,
+        "carbs": 50,
+        "fat": 8,
+        "price": 7.99
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/grilled-chicken-breast-meat-salad_74190-6125.jpg?t=st=1717197959~exp=1717201559~hmac=58065a46b3f6484bc679f850d1d4e12a45853af2ef175e92e9db4ba6b6f33698&w=900",
+        "calories": 280,
+        "protein": 18,
+        "carbs": 35,
+        "fat": 6,
+        "price": 6.29
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/flat-lay-hand-holding-bowl-with-oats-fruits_23-2148361765.jpg?t=st=1717198067~exp=1717201667~hmac=35bc8011fafed5b45ee2f98142e5e1be9b981238a863b44e368bd308f4e370dd&w=900",
+        "calories": 320,
+        "protein": 22,
+        "carbs": 40,
+        "fat": 10,
+        "price": 7.49
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/top-view-healthy-breakfast-with-muesli_23-2148407067.jpg?t=st=1717198080~exp=1717201680~hmac=7f9fb65a0a5de6e14f536c72158cc78d845093e359636a0214f0368f716386e2&w=900",
+        "calories": 400,
+        "protein": 30,
+        "carbs": 50,
+        "fat": 12,
+        "price": 8.99
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/top-view-tasty-breakfast-ready-be-served_23-2148566807.jpg?t=st=1717198171~exp=1717201771~hmac=c4939f51c7ae0cd79541a3032478c56f4963289babd7626a47c554c054f926be&w=740",
+        "calories": 450,
+        "protein": 35,
+        "carbs": 55,
+        "fat": 14,
+        "price": 9.49
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/bowl-filled-with-fruit-cereals-flat-lay_23-2148585636.jpg?t=st=1717198107~exp=1717201707~hmac=e07f6eff37af89d39b90c6f1f37c4c473871edcdd0384ddd0eb2a7dda06e4e85&w=900",
+        "calories": 420,
+        "protein": 32,
+        "carbs": 52,
+        "fat": 13,
+        "price": 9.19
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/top-view-breakfast-bowl-with-granola-fruits_23-2148566818.jpg?t=st=1717198158~exp=1717201758~hmac=f75246cea6aa408eddabe8828f1aebbfb21fbf7c13a78f6f4405e95cbe364e09&w=900",
+        "calories": 380,
+        "protein": 28,
+        "carbs": 48,
+        "fat": 11,
+        "price": 8.79
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/close-up-breakfast-bowl-with-granola-milk_23-2148566790.jpg?t=st=1717198194~exp=1717201794~hmac=eabdf4155e393a23957ec5a3f1e246375979535a1f8b30630b3becd138770915&w=740",
+        "calories": 390,
+        "protein": 29,
+        "carbs": 49,
+        "fat": 12,
+        "price": 8.89
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/close-up-breakfast-bowl-with-granola-strawberry_23-2148566792.jpg?t=st=1717198207~exp=1717201807~hmac=a8a38197ac2d6bb89fefc022ca49e622bb2190e842dafad3c7f750aebc5709c9&w=740",
+        "calories": 310,
+        "protein": 20,
+        "carbs": 42,
+        "fat": 9,
+        "price": 6.99
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/close-up-breakfast-bowls-with-granola-blueberry_23-2148566822.jpg?t=st=1717198230~exp=1717201830~hmac=d724ddab37dc5a2da0091be82bb364cc43f8dd484820d13b77cd4189b53ba4f8&w=360",
+        "calories": 270,
+        "protein": 17,
+        "carbs": 33,
+        "fat": 7,
+        "price": 6.39
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/top-view-breakfast-bowl-with-granola-orange_23-2148566834.jpg?t=st=1717198247~exp=1717201847~hmac=6f116b2f436c8576dcbafbe5ba45571252d0ced2f4f972a9be0db2987e6d3ad2&w=900",
+        "calories": 410,
+        "protein": 31,
+        "carbs": 53,
+        "fat": 13,
+        "price": 9.29
+    },
+    {
+        "category": "After-Workout",
+        "image": "https://img.freepik.com/free-photo/close-up-delicious-yogurt-with-granola-banana_23-2148566817.jpg?w=900&t=st=1717198303~exp=1717198903~hmac=4d26f2ffd195c08b5936ff055288ae1c22a8cae6aa3bbf2aefb3ea2ad0ca4989",
+        "calories": 440,
+        "protein": 34,
+        "carbs": 54,
+        "fat": 14,
+        "price": 9.59
+    },
+    {
+        "category": "Pre-Workout",
+        "image": "https://img.freepik.com/free-photo/oatmeal-kiwi-nuts-oats_23-2148361823.jpg?w=900&t=st=1717198370~exp=1717198970~hmac=0ca8162029b83d17f61dc3879d7ecaf07b244680a85f245e1458642d21632a91",
+        "calories": 295,
+        "protein": 19,
+        "carbs": 39,
+        "fat": 8,
+        "price": 6.79
+    }
+]

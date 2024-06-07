@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
+
+    public function index()
+    {
+        $Customers = Customer::with('Goals', 'Type', 'Allergy', 'Productivity')->get();
+        if($Customers){
+            return response($Customers);
+        }else{
+            return response([
+                "message" => "No Customer Was Found!"
+            ]);
+        }
+
+    }
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -61,7 +74,8 @@ class CustomerController extends Controller
             'message' => 'Login successful.',
             'token' => $token,
             'customer_id' => $customer->id,
-            'first_name' => $customer->first_name
+            'first_name' => $customer->first_name,
+            "role" => $customer->role
         ]);
     }
 

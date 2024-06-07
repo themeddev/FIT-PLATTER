@@ -27,7 +27,7 @@ const Checkout = ({ isCheckout, setIsCheckout, cartList, cartTotalPrice }) => {
 
       if (customPlates.length > 0) {
         const addCustomPlatesPromises = customPlates.map(customPlate =>
-          axios.post("http://localhost:8000/api/meals", {
+          axios.post(`${import.meta.env.VITE_APP_BACKEND_HOST}/api/meals`, {
             category: customPlate.category,
             calories: customPlate.calories,
             carbs: customPlate.carbs,
@@ -56,7 +56,7 @@ const Checkout = ({ isCheckout, setIsCheckout, cartList, cartTotalPrice }) => {
         });
 
         // Create the order with updated cart list
-        const response = await axios.post("http://localhost:8000/api/orders", {
+        const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND_HOST}/api/orders`, {
           customer_id: Customer.customer_id,
           total_price: cartTotalPrice + 10, // Pass the total price of the order + delivery
           confirmed: false,
@@ -71,7 +71,7 @@ const Checkout = ({ isCheckout, setIsCheckout, cartList, cartTotalPrice }) => {
 
       } else {
         // If no custom plates, proceed with the order directly
-        const response = await axios.post("http://localhost:8000/api/orders", {
+        const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND_HOST}/api/orders`, {
           customer_id: Customer.customer_id,
           total_price: cartTotalPrice + 10, // Pass the total price of the order + delivery
           confirmed: false,

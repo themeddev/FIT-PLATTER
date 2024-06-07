@@ -1,0 +1,182 @@
+[
+    {
+        "name": "Eggs",
+        "image": "https://img.freepik.com/free-photo/three-fresh-organic-raw-eggs-isolated-white-surface_114579-43677.jpg?t=st=1717196957~exp=1717200557~hmac=dc66a50c1d2b13d0b3f9fa5910548a2960511e1537a717a87fdce736600ddcb2&w=900",
+        "calories": 155,
+        "protein": 13,
+        "carbs": 1,
+        "fat": 11,
+        "measurementUnit": "Unit",
+        "price": 0.5
+    },
+    {
+        "name": "Banana",
+        "image": "https://img.freepik.com/free-photo/ai-generated-image-banana_23-2150683022.jpg?t=st=1717198940~exp=1717202540~hmac=16a1e2cd2b5f65f379c15c9bad97b8acaf7bdc47c5f1e7d93e7b7e747e6dc573&w=996",
+        "calories": 89,
+        "protein": 1,
+        "carbs": 23,
+        "fat": 0.3,
+        "measurementUnit": "Unit",
+        "price": 0.2
+    },
+    {
+        "name": "Chicken Breast",
+        "image": "https://img.freepik.com/premium-photo/close-up-chicken-breast-wooden-board-with-ingredients_23-2148440846.jpg?w=900",
+        "calories": 165,
+        "protein": 31,
+        "carbs": 0,
+        "fat": 3.6,
+        "measurementUnit": "Gram",
+        "price": 1.5
+    },
+    {
+        "name": "Broccoli",
+        "image": "https://img.freepik.com/free-photo/white-vegetable-healthy-fresh-natural_1203-5946.jpg?t=st=1717197139~exp=1717200739~hmac=70210846d2b9fa2ac1cd621236b68ddf3efa7cdcf7f11a8e45f44db795d1aa37&w=900",
+        "calories": 55,
+        "protein": 4,
+        "carbs": 11,
+        "fat": 0.5,
+        "measurementUnit": "Gram",
+        "price": 0.3
+    },
+    {
+        "name": "Almonds",
+        "image": "https://img.freepik.com/free-photo/almonds-bowl-dark-background_1150-45098.jpg?t=st=1717197184~exp=1717200784~hmac=277be0ee7e89aeac1124208e75299d80ed09fa344c187452259de4b33bca389b&w=900",
+        "calories": 579,
+        "protein": 21,
+        "carbs": 22,
+        "fat": 50,
+        "measurementUnit": "Gram",
+        "price": 2.0
+    },
+    {
+        "name": "Oatmeal",
+        "image": "https://img.freepik.com/free-photo/top-view-bowl-cereals_23-2148604094.jpg?t=st=1717197208~exp=1717200808~hmac=bfb307d28830a18df4e69aa16230abb6e5eb0582a2b97b97defd9425a66ea46b&w=900",
+        "calories": 68,
+        "protein": 2.4,
+        "carbs": 12,
+        "fat": 1.4,
+        "measurementUnit": "Cup",
+        "price": 0.4
+    },
+    {
+        "name": "Salmon",
+        "image": "https://img.freepik.com/free-photo/raw-salmon_144627-33847.jpg?t=st=1717197225~exp=1717200825~hmac=d4919f11283635d6c41d6808b8a3a677d49a72b009a9be4789e021525bd0e0a0&w=900",
+        "calories": 208,
+        "protein": 20,
+        "carbs": 0,
+        "fat": 13,
+        "measurementUnit": "Gram",
+        "price": 2.5
+    },
+    {
+        "name": "Greek Yogurt",
+        "image": "https://img.freepik.com/free-photo/organic-yogurt-bowl-with-oats-table_23-2148529400.jpg?t=st=1717197294~exp=1717200894~hmac=a3755949de4544821caef9317baf97ec02f2e6c70635ce5b75959baee5158da8&w=740",
+        "calories": 59,
+        "protein": 10,
+        "carbs": 3.6,
+        "fat": 0.4,
+        "measurementUnit": "Cup",
+        "price": 1.0
+    },
+    {
+        "name": "Sweet Potato",
+        "image": "https://img.freepik.com/free-photo/sweet-potatoes-white-surface_144627-45170.jpg?t=st=1717197344~exp=1717200944~hmac=6407b7fe44a3c94f19e76677a340bbc60703fec6947db5f00a5fe3e8ae3541e9&w=900",
+        "calories": 86,
+        "protein": 2,
+        "carbs": 20,
+        "fat": 0.1,
+        "measurementUnit": "Gram",
+        "price": 0.6
+    },
+    {
+        "name": "Quinoa",
+        "image": "https://img.freepik.com/free-photo/spoon-bowl-full-seeds_23-2148536617.jpg?t=st=1717197378~exp=1717200978~hmac=36c571c3e718607a6a8a1022b8017adef3283bdebb166682d72ce00b70eb511a&w=900",
+        "calories": 120,
+        "protein": 4,
+        "carbs": 21,
+        "fat": 1.9,
+        "measurementUnit": "Cup",
+        "price": 1.2
+    },
+    {
+        "name": "Spinach",
+        "image": "https://img.freepik.com/free-photo/meal-vegetable-food-agriculture-vitamin_1203-5924.jpg?t=st=1717197412~exp=1717201012~hmac=0a95c26c9e8bf4de168f72407f963ad614d9413ab7a7bce853cb6128e2adf36a&w=900",
+        "calories": 23,
+        "protein": 2.9,
+        "carbs": 3.6,
+        "fat": 0.4,
+        "measurementUnit": "Gram",
+        "price": 0.2
+    },
+    {
+        "name": "Brown Rice",
+        "image": "https://img.freepik.com/free-photo/close-up-rice-texture_23-2148129939.jpg?t=st=1717197466~exp=1717201066~hmac=778a5334baad2356f912d964614795ed080b6f616016dfde2819ba948628b3a7&w=900",
+        "calories": 112,
+        "protein": 2.6,
+        "carbs": 23,
+        "fat": 0.9,
+        "measurementUnit": "Cup",
+        "price": 0.5
+    },
+    {
+        "name": "Avocado",
+        "image": "https://img.freepik.com/free-photo/top-view-healthy-fresh-halved-avocado-wooden-kitchen-board-sack-cloth-surface_141793-14865.jpg?t=st=1717197499~exp=1717201099~hmac=538756e7921d2d0d3dac64e1c507d45c803d8cb046f80bbc4917decd2d154639&w=900",
+        "calories": 160,
+        "protein": 2,
+        "carbs": 9,
+        "fat": 15,
+        "measurementUnit": "Unit",
+        "price": 1.0
+    },
+    {
+        "name": "Blueberries",
+        "image": "https://img.freepik.com/free-photo/juniper-berries-levitate-white-background_485709-25.jpg?t=st=1717197555~exp=1717201155~hmac=93e1db45f7b81114fc5b76df31761f5971f9a5f4d6bd7703a1058e92816bd719&w=900",
+        "calories": 57,
+        "protein": 0.7,
+        "carbs": 14,
+        "fat": 0.3,
+        "measurementUnit": "Cup",
+        "price": 1.5
+    },
+    {
+        "name": "Walnuts",
+        "image": "https://img.freepik.com/free-photo/fresh-walnut-with-leaves_144627-16008.jpg?t=st=1717197669~exp=1717201269~hmac=2498090f2b546bd22d287d90b3d86a8e321fafe6232f5c29d1e701e270f74e52&w=900",
+        "calories": 654,
+        "protein": 15,
+        "carbs": 14,
+        "fat": 65,
+        "measurementUnit": "Gram",
+        "price": 2.5
+    },
+    {
+        "name": "Tuna",
+        "image": "https://img.freepik.com/free-photo/open-tuna-can-seen-from_1187-2498.jpg?t=st=1717282102~exp=1717285702~hmac=440d6f8119ded8d0730404985499dbad6eb2327493397613289a53a4e9d7564e&w=740",
+        "calories": 116,
+        "protein": 26.4,
+        "carbs": 0,
+        "fat": 0.8,
+        "measurementUnit": "Gram",
+        "price": 2.5
+    },
+    {
+        "name": "Carrots",
+        "image": "https://img.freepik.com/free-photo/realistic-image-bunch-carrots-colourful-background_125540-3798.jpg?t=st=1717282142~exp=1717285742~hmac=7564fdc8491be253b4c3ddbf47d2eecadc28078a1c5cfa062c7de83e9a4a2dab&w=996",
+        "calories": 41,
+        "protein": 0.9 ,
+        "carbs": 9.6 ,
+        "fat": 0.2 ,
+        "measurementUnit": "Gram",
+        "price": 2.5
+    },
+    {
+        "name": "Milk",
+        "image": "https://img.freepik.com/free-photo/glass-jar-full-milk_23-2148211467.jpg?t=st=1717282175~exp=1717285775~hmac=fef840c6977fc6c132e249baf330978023fa07176028eb4a9be2de68db266bba&w=740",
+        "calories": 61 ,
+        "protein": 3.2 ,
+        "carbs": 4.8  ,
+        "fat": 3.3 ,
+        "measurementUnit": "Liter",
+        "price": 2.5
+    }
+]

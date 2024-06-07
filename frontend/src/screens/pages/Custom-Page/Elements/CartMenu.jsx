@@ -85,7 +85,7 @@ const CartMenu = ({ showCart, setShowMenu }) => {
           Plat Elements
         </h3>
         <p className="text-gray-600">Total Elments: {MenuList.length}</p>
-        <p className="text-gray-600">Plat Price: {menuTotalPrice} MAD</p>
+        <p className="text-gray-600">Plat Price: {menuTotalPrice.toFixed(2)} MAD</p>
 
         <div className="mt-6">
           {MenuList.length > 0 ? (

@@ -106,8 +106,8 @@ export default function SignUpForm() {
         <meta name="keywords" content={SEO[7].keywords.join(", ")} />
       </Helmet>
 
-      <div className="flex items-center justify-center bg-gray-40">
-        <div className="w-3/5 px-10 pb-4 my-10 bg-white border rounded-lg shadow-lg">
+      <div className="flex h-screen items-center justify-center md:bg-gray-50">
+        <div className="md:w-3/5 w-full px-6 md:px-10 pb-4 md:my-10 bg-white md:border rounded-lg md:shadow-lg">
           <div className='flex flex-col items-center justify-center gap-4'>
             <div className='flex max-w-xs space-x-3 mt-10 self-center'>
               {step === 1 ? (
@@ -124,10 +124,10 @@ export default function SignUpForm() {
             </div>
 
             <div className='self-start'>
-              <h1 className="text-l font-small text-gray-500">
+              <h1 className="md:text-base text-sm font-small text-gray-500">
                 {step === 1 ? 'Welcome to our community!' : 'Keep going..'}
               </h1>
-              <h2 className="text-3xl font-Outfit font-outfit text-myBlue">
+              <h2 className="md:text-3xl text-2xl font-Outfit font-outfit text-myBlue">
                 {step === 1 ? 'Track Your Progress & More!' : 'Almost Finished!'}
               </h2>
             </div>

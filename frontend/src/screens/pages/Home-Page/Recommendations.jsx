@@ -52,7 +52,7 @@ const Recommendations = () => {
         </p>
         <ul>
           {meal.ingredients.map((item, index) => (
-            <li key={index} className="text-base text-myBlue">
+            <li key={index} className="text-base text-myBlue ">
               - {item}
             </li>
           ))}
@@ -67,7 +67,7 @@ const Recommendations = () => {
   );
 
   return (
-    <div className="flex justify-center items-start mx-[10%] lg:mx-[8%] md:mx-[5%] flex-col lg:flex-row gap-4 my-10">
+    <div className="flex justify-center items-center md:mx-[4%] lg:mx-[8%] flex-col lg:flex-row gap-4 my-10">
       {renderMealCard(workoutMeals.preMeal)}
       {renderMealCard(workoutMeals.afterMeal)}
     </div>

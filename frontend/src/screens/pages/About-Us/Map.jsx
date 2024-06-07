@@ -1,6 +1,6 @@
 const Map = () => {
     return ( 
-        <div className="flex flex-col w-4/5 mx-auto text-center ">
+        <div className="flex flex-col w-full px-4 md:p-0 md:w-4/5 mx-auto text-center ">
             <h3 className="font-Outfit text-2xl text-headersBlue font-semibold">
                 Here We Are!
             </h3>

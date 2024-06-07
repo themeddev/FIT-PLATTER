@@ -28,9 +28,9 @@ const FoodItem = ({ item, setSelectedItem, setShowDetail }) => {
       }}
       className="card card-compact cursor-pointer h-80 lg:h-96 w-64 lg:w-80 bg-white hover:shadow-lg shadow-md"
     >
-      <figure>
+      <figure className="w-full h-full">
         <img
-          className="hover:scale-105 duration-300"
+          className="w-full h-full object-cover hover:scale-105 duration-300"
           src={item.image}
           alt={item.category}
         />

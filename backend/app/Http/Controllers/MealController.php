@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
+
 use Illuminate\Http\Request;
 use App\Models\Meal;
 use App\Models\Element;
@@ -175,17 +177,19 @@ class MealController extends Controller
         $url = 'http://localhost:8008/';
         $ingredient = Element::pluck('name')->toArray();
 
-        // $User = Customer::with('Goals', 'Type', 'Allergy', 'Productivity')->get($id);
-        $User = Customer::find($id);
-        return $User;
+        $User = Customer::with('Goals', 'Type', 'Allergy', 'Productivity')->find($id);
         
         $res = Http::post($url, ['ingredient' => $ingredient, "User" => $User]);
-
+        // $res = Http::get($url);
         // $client = new Client();
         // $res = $client->request("POST", $url, [["name"=> "achraf", "email" => "achraf@gmail.com"], ["name" => "youness", "email"=> "younss@gmail.com"]]);
 
         if ($res->successful()) {
-            $data = $res->getbody();
+            $data = json_decode($res->getbody());
+
+            if($data->Message) return response()->json(["Message" => $data->Message]);
+
+
 
 
             $data = str_replace("```json", "", $data);
@@ -196,45 +200,47 @@ class MealController extends Controller
                 return response()->json(['error' => json_last_error_msg()], 400);
             }
 
-            $PreWorout = new Meal();
-            $total_protein = 0;
-            $total_carbs = 0;
-            $total_calories = 0;
-            $total_fat = 0;
-            $total_price = 0;
-            foreach($jsondata->afterWorkout as $ingred){
-                $info = Element::where('name', $ingred['ingredient'])->first();
-                if($info){
-                    $total_calories += $info->calories * $ingred['quantity'];
-                    $total_carbs+= $info->carbs * $ingred['quantity'];
-                    $total_fat += $info->fat * $ingred['quantity'];
-                    $total_price += $info->price * $ingred['quantity'];
-                    $total_protein += $info->protein * $ingred['quantity'];
-                    $meal_element = MealsElement::create([
-                        "meal_id" => $PreWorout->id,
-                        "element_id" => $info->id,
-                        "size" => $ingred['quantity'],
-                    ]);
-                }else{
-                    return response(['message'=> "somthing wrong"]);
-                }
-            }
+            return response().json($jsondata);
 
-            $PreWorout->price = $total_price;
-            $PreWorout->protein = $total_protein;
-            $PreWorout->fat = $total_fat;
-            $PreWorout->carbs = $total_carbs;
-            $PreWorout->calories = $total_calories;
-            $saved = $PreWorout->save();
+            // $PreWorout = new Meal();
+            // $total_protein = 0;
+            // $total_carbs = 0;
+            // $total_calories = 0;
+            // $total_fat = 0;
+            // $total_price = 0;
+            // foreach($jsondata->afterWorkout as $ingred){
+            //     $info = Element::where('name', $ingred['ingredient'])->first();
+            //     if($info){
+            //         $total_calories += $info->calories * $ingred['quantity'];
+            //         $total_carbs+= $info->carbs * $ingred['quantity'];
+            //         $total_fat += $info->fat * $ingred['quantity'];
+            //         $total_price += $info->price * $ingred['quantity'];
+            //         $total_protein += $info->protein * $ingred['quantity'];
+            //         $meal_element = MealsElement::create([
+            //             "meal_id" => $PreWorout->id,
+            //             "element_id" => $info->id,
+            //             "size" => $ingred['quantity'],
+            //         ]);
+            //     }else{
+            //         return response(['message'=> "somthing wrong"]);
+            //     }
+            // }
+
+            // $PreWorout->price = $total_price;
+            // $PreWorout->protein = $total_protein;
+            // $PreWorout->fat = $total_fat;
+            // $PreWorout->carbs = $total_carbs;
+            // $PreWorout->calories = $total_calories;
+            // $saved = $PreWorout->save();
 
             // $Meal_1 = Meal::create([
                 
             // ])
-            if($saved){
-                return response($PreWorout);
-            }else{
-                return response(['message'=> "Didnt Save!"]);
-            }
+            // if($saved){
+            //     return response($PreWorout);
+            // }else{
+            //     return response(['message'=> "Didnt Save!"]);
+            // }
         } else {
             return response()->json(['error' => 'Failed to fetch data '], $res->status());
         }

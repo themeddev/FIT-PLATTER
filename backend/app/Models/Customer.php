@@ -21,19 +21,16 @@ class Customer extends Authenticatable
 
 
     public function Goals(){
-        return $this->hasMany(Goal::class);
+        return $this->belongsTo(Goal::class, "goal_id");
     }
-
     public function Type(){
-        return $this->hasMany(Type::class);
+        return $this->belongsTo(Type::class, "type_id");
     }
-
     public function Allergy(){
-        return $this->hasMany(Allergy::class);
+        return $this->belongsTo(Allergy::class, 'allergy_id');
     }
-
     public function Productivity(){
-        return $this->hasMany(Productivity::class);
+        return $this->belongsTo(Productivity::class, 'productivity_id');
     }
     
     public function order()

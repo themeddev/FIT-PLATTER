@@ -70,9 +70,9 @@ export default function SignInForm() {
         <meta name="keywords" content={SEO[6].keywords.join(", ")} />
       </Helmet>
 
-      <div className="flex items-center justify-center h-screen bg-gray-40">
-        <div className="w-96 p-10 bg-white rounded-lg shadow-md">
-          <h1 className="text-l font-small text-gray-500">Welcome back !!!</h1>
+      <div className="flex items-center justify-center h-screen md:bg-gray-50">
+        <div className="w-96 p-10 bg-white rounded-lg md:shadow-md">
+          <h1 className="text-l font-small text-gray-500">Welcome back !</h1>
           <h2 className="text-4xl font-Outfit text-myBlue">Sign in</h2>
           {error && <p className="mt-4 text-xs text-red-500">{error}</p>}
           <form onSubmit={handleSubmit} className="mt-4">

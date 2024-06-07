@@ -28,7 +28,7 @@ const UserMenu = () => {
     navigate('/sign-in', { replace: true });
   };
 
-
+  console.log(user)
   return (
     <div className="relative h-100 w-full mx-3">
       <button
@@ -54,6 +54,15 @@ const UserMenu = () => {
           >
             Profile
           </Link>
+          {user.role === "Admin" && (
+            <Link
+              className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+              to="/dashboard"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              Dashboard
+            </Link>
+          )}
           <button
             className="flex w-full items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             onClick={() => {
