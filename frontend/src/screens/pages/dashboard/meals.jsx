@@ -22,8 +22,9 @@ export function Meals() {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(meals.length)
   return (
-    <div className="h-full w-full">
+    <Card className="h-full w-full">
         <CardHeader floated={false} shadow={false} className="rounded-none mb-3">
             <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
                 <div>
@@ -38,7 +39,7 @@ export function Meals() {
                     <div className="w-full md:w-72">
                     <Input
                         label="Search"
-                        icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                        
                     />
                     </div>  
                 </div>
@@ -46,7 +47,7 @@ export function Meals() {
         </CardHeader>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {meals.map((meal) => (
+        {meals.length !== 0 ? meals.map((meal) => (
           <Card key={meal.id} className="w-full">
             <CardHeader color="blue-gray" className="relative h-56">
               <img
@@ -85,8 +86,15 @@ export function Meals() {
                 <Button className="bg-[#f00] rounded-l-none">Delete</Button>
             </ButtonGroup>
           </Card>
-        ))}
+        )) : (
+          
+          <div className="h-[70vh] w-100 flex justify-center items-center p-5 ">
+            <Typography variant="h3" style={{color:"#bbb"}}>
+              No Meals Avilabel At this Moment
+            </Typography>
+          </div>
+        )}
       </div>
-    </div>
+    </Card>
   );
 }

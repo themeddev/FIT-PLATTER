@@ -60,6 +60,7 @@ class ElementController extends Controller
      */
     public function update(Request $request, $element)
     {
+        return response($request);
         $UpElement = Element::find($element);
         $UpElement->update($request->all());
         return $UpElement;

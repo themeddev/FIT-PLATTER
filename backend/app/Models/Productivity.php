@@ -10,6 +10,7 @@ class Productivity extends Model
 {
     use HasFactory;
 
+    public $fillable = ['productivity'];
     public function Customer(){
         return $this->hasMany(Customer::class);
     }

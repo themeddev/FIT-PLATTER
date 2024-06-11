@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -21,16 +21,26 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/features/authSlice";
+
  
 export function NavSide() {
   const [open, setOpen] = React.useState(0);
- 
+  const dispatch = useDispatch()
+ const navigate = useNavigate()
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem('user');
+    navigate('/sign-in', { replace: true });
+  };
+
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
  
   return (
-    <Card  className="h-[calc(100vh)] w-full max-w-[15rem] p-4 shadow-xl shadow-blue-gray-900/5 ">
+    <Card  className="h-[calc(100vh)]  w-full max-w-[15rem] p-4 shadow-xl shadow-blue-gray-900/5 ">
       <Link to={'/'} className="mb-2 p-4">
         
         <span className="font-Outfit text-xl uppercase text-myBlue">
@@ -161,15 +171,7 @@ export function NavSide() {
           </AccordionBody>
         </Accordion>
 
-        <ListItem>
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-          </ListItemSuffix>
-        </ListItem>
+        
         <Link to='/profile'>
           <ListItem>
             <ListItemPrefix>
@@ -178,13 +180,7 @@ export function NavSide() {
             Profile
           </ListItem>
         </Link>
-        <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleLogout()}>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

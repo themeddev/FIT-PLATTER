@@ -10,6 +10,7 @@ class Allergy extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['allergy'];
     public function Customer(){
         return $this->hasMany(Customer::class);
     }
